@@ -30,8 +30,15 @@ const player2 = {
   }
 }
 
-let turn = 1;
-let currentPlayer = player1;
+let currentPlayer;
+let turn = 2;
+
+if(turn === 1){
+  currentPlayer = player1;
+}else if(turn === 2){
+  currentPlayer = player2;
+}
+
 
 const ChangeTurn = function(currentTurn){
   if(currentTurn === 1){
@@ -82,22 +89,11 @@ squares.forEach(squares =>{
 
       if(player1.PlayerPosition[0] === player2.PlayerPosition[0]){
         if(player1.PlayerPosition[1] === player2.PlayerPosition[1]){
-  
           console.log(`${currentPlayer.playerName} winn!!!`)
-          // location.reload();
-  
+          location.reload();
         }
       }
-
       ChangeTurn(turn);
     }
   });
 });
-
-
-
-
-
-currentPlayer.SetPlayerPosition(currentPlayer.PlayerPosition)
-
-
