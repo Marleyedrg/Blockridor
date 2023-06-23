@@ -3,7 +3,7 @@ let barrer = document.querySelectorAll(".space-btw-sqr");
 
 const player1 = {
   playerName: 'player1',
-  PlayerPosition: [-4,0],
+  PlayerPosition: [-4,4],
   SetPlayerPosition : function(position){
     let squareElement = document.getElementById(`${String(position[0])}/${String(position[1])}`);
   
@@ -17,7 +17,7 @@ const player1 = {
 }
 const player2 = {
   playerName: 'player2',
-  PlayerPosition: [4,0],
+  PlayerPosition: [4,4],
   SetPlayerPosition : function(position){
     let squareElement = document.getElementById(`${String(position[0])}/${String(position[1])}`);
   
@@ -65,7 +65,13 @@ const movementValidation = function(currentPos,clickedPosition){
 }
 barrer.forEach(barrer =>{
   barrer.addEventListener("click", () =>{
-    barrer.style.backgroundColor = "black"
+    if(turn === 1 && barrer.style.backgroundColor === ""){
+      barrer.style.backgroundColor = "black"
+      ChangeTurn(turn);
+    }else if(turn === 2 && barrer.style.backgroundColor === ""){
+      barrer.style.backgroundColor = "red"
+      ChangeTurn(turn);
+    }
   });
 });
 
@@ -97,3 +103,6 @@ squares.forEach(squares =>{
     }
   });
 });
+
+player1.SetPlayerPosition(player1.PlayerPosition);
+player2.SetPlayerPosition(player2.PlayerPosition);
