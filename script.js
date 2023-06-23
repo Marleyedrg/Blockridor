@@ -31,7 +31,7 @@ const player2 = {
 }
 
 let currentPlayer;
-let turn = 2;
+let turn = 1;
 
 if(turn === 1){
   currentPlayer = player1;
