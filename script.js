@@ -24,7 +24,7 @@ const player1 = {
 }
 const player2 = {
   playerName: 'player2',
-  PlayerPosition: [4,4],
+  PlayerPosition: [0,4],
   SetPlayerPosition : function(position){
     let squareElement = document.getElementById(`${String(position[0])}/${String(position[1])}`);
   
@@ -67,14 +67,60 @@ const movementValidation = function(currentPos,clickedPosition){
   let deltaY = Math.abs(clickedPosition[1] - currentPos[1]);
   
   if(deltaX === 1 && deltaY === 0){// x move
+    if(clickedPosition[0] > currentPos[0]){
+      let possibleBarrer = (clickedPosition[0] - 0.5);
+      possibleBarrer = (`${possibleBarrer}/${clickedPosition[1]}`);
+      console.log(possibleBarrer)
+      if(document.getElementById(possibleBarrer)){
+        console.log('Está funcionando2')
+        return true;
+      }else{
+        false;
+      }
 
-    return true
-
+    }else if(clickedPosition[0] < currentPos[0]){
+      let possibleBarrer = (clickedPosition[0] + 0.5);
+      possibleBarrer = (`${possibleBarrer}/${clickedPosition[1]}`);
+      console.log(possibleBarrer)
+      if(document.getElementById(possibleBarrer)){
+        console.log('Está funcionando2')
+        return true;
+      }else{
+        false;
+      }
+    }
   }else if(deltaX === 0 && deltaY === 1){// y move
 
-    return true
+      if(clickedPosition[1] > currentPos[1]){
+        let possibleBarrer = (clickedPosition[1] - 0.5);
+        possibleBarrer = (`${clickedPosition[0]}/${possibleBarrer}`);
+        console.log(possibleBarrer)
+        if(document.getElementById(possibleBarrer)){
+          return true;
+        }else{
+          false;
+        }
 
+      }else if(clickedPosition[1] < currentPos[1]){
+        let possibleBarrer = (clickedPosition[1] + 0.5);
+        possibleBarrer = (`${clickedPosition[0]}/${possibleBarrer}`);
+        console.log(possibleBarrer)
+        if(document.getElementById(possibleBarrer)){
+          return true;
+        }else{
+          false;
+        }
+      }
     }
+    /* 
+Quando clicked > current
+SUBTRAIU 0.5 DA CLICKED POSITION
+Assim conseguiria o valor da parede que esta na interseção
+
+Quando clicked < current
+somo 0.5 DA CLICKED POSITION
+Assim conseguiria o valor da parede que esta na interseção
+    */
 }
 
 barrer.forEach(barrer =>{
