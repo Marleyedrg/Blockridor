@@ -60,10 +60,10 @@ const movementValidation = function(currentPos,clickedPosition){
   let deltaY = Math.abs(clickedPosition[1] - currentPos[1]);
   
   if(deltaX === 1 && deltaY === 0){// x move
-    if(clickedPosition[0] > currentPos[0]){
+    if(clickedPosition[0] > currentPos[0] && currentPos[0] !== 0){
       let possibleBarrer = (clickedPosition[0] - 0.5);
       possibleBarrer = (`${possibleBarrer}/${clickedPosition[1]}`);
-      console.log(possibleBarrer)
+      console.log(`${possibleBarrer} 1`)
       if(document.getElementById(possibleBarrer)){
         console.log('Está funcionando2')
         return true;
@@ -71,7 +71,7 @@ const movementValidation = function(currentPos,clickedPosition){
         false;
       }
 
-    }else if(clickedPosition[0] < currentPos[0]){
+    }else if(clickedPosition[0] < currentPos[0] || currentPos[0] === 0){
       let possibleBarrer = (clickedPosition[0] + 0.5);
       possibleBarrer = (`${possibleBarrer}/${clickedPosition[1]}`);
       console.log(possibleBarrer)
@@ -84,7 +84,7 @@ const movementValidation = function(currentPos,clickedPosition){
     }
   }else if(deltaX === 0 && deltaY === 1){// y move
 
-      if(clickedPosition[1] > currentPos[1]){
+      if(clickedPosition[1] > currentPos[1] && currentPos[1] !== 0){
         let possibleBarrer = (clickedPosition[1] - 0.5);
         possibleBarrer = (`${clickedPosition[0]}/${possibleBarrer}`);
         console.log(possibleBarrer)
@@ -94,7 +94,7 @@ const movementValidation = function(currentPos,clickedPosition){
           false;
         }
 
-      }else if(clickedPosition[1] < currentPos[1]){
+      }else if(clickedPosition[1] < currentPos[1] || currentPos[1] === 0){
         let possibleBarrer = (clickedPosition[1] + 0.5);
         possibleBarrer = (`${clickedPosition[0]}/${possibleBarrer}`);
         console.log(possibleBarrer)
