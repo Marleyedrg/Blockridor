@@ -1,9 +1,11 @@
 let squares = document.querySelectorAll(".squares");
 let barrer = document.querySelectorAll(".space-btw-sqr");
+let message = document.getElementById('message');
 
 const player1 = {
-  playerName: 'player1',
-  PlayerPosition: [-4,4],
+  playerName: '⚫BLACK',
+  PlayerPosition: [-4,0],
+  positionXToWin: 4,
   SetPlayerPosition : function(position){
     let squareElement = document.getElementById(`${String(position[0])}/${String(position[1])}`);
   
@@ -16,8 +18,9 @@ const player1 = {
   }
 }
 const player2 = {
-  playerName: 'player2',
-  PlayerPosition: [0,4],
+  playerName: '🔴RED',
+  PlayerPosition: [4,0],
+  positionXToWin: -4,
   SetPlayerPosition : function(position){
     let squareElement = document.getElementById(`${String(position[0])}/${String(position[1])}`);
   
@@ -30,8 +33,23 @@ const player2 = {
   }
 }
 
+let Winner = function(){
+  player1.RmvOldPlyerPosition(player1.PlayerPosition);
+  player2.RmvOldPlyerPosition(player2.PlayerPosition);
+
+
+  message.innerText = `${currentPlayer.playerName} winn!!!`
+
+}
+
 let currentPlayer;
-let turn = 1;
+let turn = Math.floor(Math.random()*2)+1;
+
+if(turn === 1){
+  message.innerText = `${player1.playerName} starts`
+}else{
+  message.innerText = `${player2.playerName} starts`
+}
 
 if(turn === 1){//initial state
   currentPlayer = player1;
@@ -43,14 +61,28 @@ if(turn === 1){//initial state
 const ChangeTurn = function(currentTurn){
   if(currentTurn === 1){
     currentPlayer = player2;
+    message.innerText = `it's ${player1.playerName} turn`
     return turn = 2;
   }else if(currentTurn === 2){
     currentPlayer = player1;
+    message.innerText = `it's ${player2.playerName} turn`
     return turn = 1;
   }
 }
 
-
+barrer.forEach(barrer =>{
+  barrer.addEventListener("click", () =>{
+    if(turn === 1 && barrer.style.backgroundColor === ""){
+      barrer.style.backgroundColor = "black"
+      barrer.id = 'black';
+      ChangeTurn(turn);
+    }else if(turn === 2 && barrer.style.backgroundColor === ""){
+      barrer.style.backgroundColor = "red"
+      barrer.id = 'red';
+      ChangeTurn(turn);
+    }
+  });
+});
 
 const movementValidation = function(currentPos,clickedPosition){
   /**
@@ -60,6 +92,7 @@ const movementValidation = function(currentPos,clickedPosition){
   let deltaY = Math.abs(clickedPosition[1] - currentPos[1]);
   
   if(deltaX === 1 && deltaY === 0){// x move
+
     if(clickedPosition[0] > currentPos[0] && currentPos[0] !== 0){
       let possibleBarrer = (clickedPosition[0] - 0.5);
       possibleBarrer = (`${possibleBarrer}/${clickedPosition[1]}`);
@@ -84,7 +117,7 @@ const movementValidation = function(currentPos,clickedPosition){
     }
   }else if(deltaX === 0 && deltaY === 1){// y move
 
-      if(clickedPosition[1] > currentPos[1] && currentPos[1] !== 0){
+      if(clickedPosition[1] > currentPos[1] || currentPos[1] !== 0){
         let possibleBarrer = (clickedPosition[1] - 0.5);
         possibleBarrer = (`${clickedPosition[0]}/${possibleBarrer}`);
         console.log(possibleBarrer)
@@ -94,7 +127,7 @@ const movementValidation = function(currentPos,clickedPosition){
           false;
         }
 
-      }else if(clickedPosition[1] < currentPos[1] || currentPos[1] === 0){
+      }else if(clickedPosition[1] < currentPos[1] && currentPos[1] === 0){
         let possibleBarrer = (clickedPosition[1] + 0.5);
         possibleBarrer = (`${clickedPosition[0]}/${possibleBarrer}`);
         console.log(possibleBarrer)
@@ -116,20 +149,6 @@ Assim conseguiria o valor da parede que esta na interseção
     */
 }
 
-barrer.forEach(barrer =>{
-  barrer.addEventListener("click", () =>{
-    if(turn === 1 && barrer.style.backgroundColor === ""){
-      barrer.style.backgroundColor = "black"
-      barrer.id = '';
-      ChangeTurn(turn);
-    }else if(turn === 2 && barrer.style.backgroundColor === ""){
-      barrer.style.backgroundColor = "red"
-      barrer.id = '';
-      ChangeTurn(turn);
-    }
-  });
-});
-
 squares.forEach(squares =>{
   squares.addEventListener("click", () =>{
 
@@ -148,13 +167,19 @@ squares.forEach(squares =>{
     
       currentPlayer.SetPlayerPosition(currentPlayer.PlayerPosition);
 
-      if(player1.PlayerPosition[0] === player2.PlayerPosition[0]){
-        if(player1.PlayerPosition[1] === player2.PlayerPosition[1]){
-          console.log(`${currentPlayer.playerName} winn!!!`)
-          location.reload();
-        }
+      if(player1.PlayerPosition[0] === player2.PlayerPosition[0] &&
+        player1.PlayerPosition[1] === player2.PlayerPosition[1]){
+
+        Winner();
+ 
+      }else if(player1.PlayerPosition[0] === player1.positionXToWin || 
+        player2.PlayerPosition[0] === player2.positionXToWin){
+     
+        Winner();
+
+      }else{
+        ChangeTurn(turn);
       }
-      ChangeTurn(turn);
     }
   });
 });
