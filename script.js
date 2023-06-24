@@ -1,13 +1,6 @@
 let squares = document.querySelectorAll(".squares");
 let barrer = document.querySelectorAll(".space-btw-sqr");
 
-squareProperty = {
-  top:true,
-  right:true,
-  bottom:true,
-  ledt:true,
-}
-
 const player1 = {
   playerName: 'player1',
   PlayerPosition: [-4,4],
