@@ -57,44 +57,7 @@ const ChangeTurn = function(currentTurn){
   }
 }
 
-const hasABarrierWithThisPosition = function(currentPos,clickedPosition , XOrYMove,directionOperation){
-  let barrerId = [];
-  barrerId = [...currentPos];
-  let v;
-  
-  if(XOrYMove === 'x'){
 
-    if(directionOperation === 'negative'){
-
-      barrerId = (`${barrerId[0]+0.5}/${barrerId[1]}`)
-
-    }else if (directionOperation === 'positive'){
-
-      barrerId = (`${barrerId[0]+0.5}/${barrerId[1]}`)
-    }
-
-  }else if(XOrYMove === 'y'){
-
-    if(directionOperation === 'negative'){
-
-      barrerId = (`${barrerId[0]}/${barrerId[1]+0.5}`)
-
-    }else if (directionOperation === 'positive'){
-
-      barrerId = (`${barrerId[0]}/${barrerId[1]+0.5}`)
-
-    }
-  }
-
-  let barrerPosition = barrerId.split('/');
-  barrerPosition = [Number(barrerPosition[0]),Number(barrerPosition[1])]
-
-    if(document.getElementById(barrerId)){
-      return true;
-    }else{
-      return false;
-    }
-}
 
 const movementValidation = function(currentPos,clickedPosition){
   /**
@@ -104,43 +67,14 @@ const movementValidation = function(currentPos,clickedPosition){
   let deltaY = Math.abs(clickedPosition[1] - currentPos[1]);
   
   if(deltaX === 1 && deltaY === 0){// x move
-    if(currentPos[0] < 0){
-      if(hasABarrierWithThisPosition(currentPos,clickedPosition, 'x', 'negative')){
-        return true;
-      }else{
-        return false;
-      }
 
-    }else if(currentPos[0] >= 0){
+    return true
 
-      if(hasABarrierWithThisPosition(currentPos,clickedPosition, 'x','positive')){
-        return true;
-      }else{
-        return false;
-      }
-
-    }
   }else if(deltaX === 0 && deltaY === 1){// y move
 
-    if(currentPos[1] < 0){
-      if(hasABarrierWithThisPosition(currentPos,clickedPosition, 'y', 'negative')){
-        return true;
-      }else{
-        return false;
-      }
+    return true
 
-    }else if(currentPos[1] >= 0){
-
-      if(hasABarrierWithThisPosition(currentPos,clickedPosition, 'y','positive')){
-        return true;
-      }else{
-        return false;
-      }
     }
-  }else{
-    return false;
-  }
-
 }
 
 barrer.forEach(barrer =>{
