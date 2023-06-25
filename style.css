@@ -14,6 +14,7 @@ html{
 .scoreboard{
     display: flex;
     justify-content: center;
+    gap: 2rem;
 }
 .game{
     border: #111111 solid 0.5rem;

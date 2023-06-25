@@ -1,6 +1,9 @@
 let squares = document.querySelectorAll(".squares");
 let barrer = document.querySelectorAll(".space-btw-sqr");
+
 let message = document.getElementById('message');
+
+let reloadBtn = document.getElementById('reloadBtn')
 
 const player1 = {
   playerName: '⚫BLACK',
@@ -40,6 +43,12 @@ let Winner = function(){
 
   message.innerText = `${currentPlayer.playerName} winn!!!`
 
+  reloadBtn.classList.remove('hidden')
+
+  reloadBtn.addEventListener('click', ()=>{
+    location.reload();
+  })
+  
 }
 
 let currentPlayer;
@@ -109,14 +118,14 @@ const movementValidation = function(currentPos,clickedPosition){
         false;
       }
 
-    }else if(clickedPosition[0] < currentPos[0] || currentPos[0] === 0){
+    }else if(clickedPosition[0] < currentPos[0] && currentPos[0] !== 0){
       let possibleBarrer = (clickedPosition[0] + 0.5);
       possibleBarrer = (`${possibleBarrer}/${clickedPosition[1]}`);
       console.log(possibleBarrer)
       if(turn == 1 && document.getElementById(possibleBarrer).classList.contains('black') ||
       turn == 2 && document.getElementById(possibleBarrer).classList.contains('red') ||
       document.getElementById(possibleBarrer).classList.contains('white')){
-        console.log('Está funcionando2')
+        console.log('Está funcionando213')
         return true;
       }else{
         false;
@@ -181,12 +190,12 @@ squares.forEach(squares =>{
       if(player1.PlayerPosition[0] === player2.PlayerPosition[0] &&
         player1.PlayerPosition[1] === player2.PlayerPosition[1]){
 
-        Winner();
+        return Winner();
  
       }else if(player1.PlayerPosition[0] === player1.positionXToWin || 
         player2.PlayerPosition[0] === player2.positionXToWin){
      
-        Winner();
+        return Winner();
 
       }else{
         ChangeTurn(turn);
