@@ -57,7 +57,6 @@ if(turn === 1){//initial state
   currentPlayer = player2;
 }
 
-//h
 const ChangeTurn = function(currentTurn){
   if(currentTurn === 1){
     currentPlayer = player2;
