@@ -65,9 +65,7 @@ html{
 .white{
     background-color: white;
 }
-#player1{
-    position: absolute;
-}
-#player2{
+.player{
+    font-size: 25pt;
     position: absolute;
 }

@@ -9,7 +9,7 @@ const player1 = {
   SetPlayerPosition : function(position){
     let squareElement = document.getElementById(`${String(position[0])}/${String(position[1])}`);
   
-    squareElement.innerHTML += "<h1 id=\"player1\">⚫</h1>";
+    squareElement.innerHTML += `<h1 id="player1" class="player">⚫</h1>`;
   },
   RmvOldPlyerPosition : function(position){
     squareElement = document.getElementById(`${String(position[0])}/${String(position[1])}`);
@@ -24,7 +24,7 @@ const player2 = {
   SetPlayerPosition : function(position){
     let squareElement = document.getElementById(`${String(position[0])}/${String(position[1])}`);
   
-    squareElement.innerHTML += "<h1 id=\"player2\">🔴</h1>";
+    squareElement.innerHTML += `<h1 id="player2" class="player">🔴</h1>`;
   },
   RmvOldPlyerPosition : function(position){
     squareElement = document.getElementById(`${String(position[0])}/${String(position[1])}`);
