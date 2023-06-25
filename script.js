@@ -71,13 +71,17 @@ const ChangeTurn = function(currentTurn){
 
 barrer.forEach(barrer =>{
   barrer.addEventListener("click", () =>{
-    if(turn === 1 && barrer.style.backgroundColor === ""){
-      barrer.style.backgroundColor = "black"
-      barrer.id = 'black';
+    if(turn === 1 && barrer.classList.contains('white')){
+
+      barrer.classList.remove('white');
+      barrer.classList.add('black');
+
       ChangeTurn(turn);
-    }else if(turn === 2 && barrer.style.backgroundColor === ""){
-      barrer.style.backgroundColor = "red"
-      barrer.id = 'red';
+    }else if(turn === 2 && barrer.classList.contains('white')){
+
+      barrer.classList.remove('white');
+      barrer.classList.add('red');
+
       ChangeTurn(turn);
     }
   });
@@ -96,7 +100,9 @@ const movementValidation = function(currentPos,clickedPosition){
       let possibleBarrer = (clickedPosition[0] - 0.5);
       possibleBarrer = (`${possibleBarrer}/${clickedPosition[1]}`);
       console.log(`${possibleBarrer} 1`)
-      if(document.getElementById(possibleBarrer)){
+      if(turn == 1 && document.getElementById(possibleBarrer).classList.contains('black') ||
+      turn == 2 && document.getElementById(possibleBarrer).classList.contains('red') ||
+      document.getElementById(possibleBarrer).classList.contains('white')){
         console.log('Está funcionando2')
         return true;
       }else{
@@ -107,7 +113,9 @@ const movementValidation = function(currentPos,clickedPosition){
       let possibleBarrer = (clickedPosition[0] + 0.5);
       possibleBarrer = (`${possibleBarrer}/${clickedPosition[1]}`);
       console.log(possibleBarrer)
-      if(document.getElementById(possibleBarrer)){
+      if(turn == 1 && document.getElementById(possibleBarrer).classList.contains('black') ||
+      turn == 2 && document.getElementById(possibleBarrer).classList.contains('red') ||
+      document.getElementById(possibleBarrer).classList.contains('white')){
         console.log('Está funcionando2')
         return true;
       }else{
@@ -120,7 +128,9 @@ const movementValidation = function(currentPos,clickedPosition){
         let possibleBarrer = (clickedPosition[1] - 0.5);
         possibleBarrer = (`${clickedPosition[0]}/${possibleBarrer}`);
         console.log(possibleBarrer)
-        if(document.getElementById(possibleBarrer)){
+        if(turn == 1 && document.getElementById(possibleBarrer).classList.contains('black') ||
+        turn == 2 && document.getElementById(possibleBarrer).classList.contains('red') ||
+        document.getElementById(possibleBarrer).classList.contains('white')){
           return true;
         }else{
           false;
@@ -130,7 +140,9 @@ const movementValidation = function(currentPos,clickedPosition){
         let possibleBarrer = (clickedPosition[1] + 0.5);
         possibleBarrer = (`${clickedPosition[0]}/${possibleBarrer}`);
         console.log(possibleBarrer)
-        if(document.getElementById(possibleBarrer)){
+        if(turn == 1 && document.getElementById(possibleBarrer).classList.contains('black') ||
+        turn == 2 && document.getElementById(possibleBarrer).classList.contains('red') ||
+        document.getElementById(possibleBarrer).classList.contains('white')){
           return true;
         }else{
           false;

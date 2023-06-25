@@ -56,6 +56,15 @@ html{
 .hidden{
     display: none;
 }
+.red{
+    background-color: red;
+}
+.black{
+    background: black;
+}
+.white{
+    background-color: white;
+}
 #player1{
     position: absolute;
 }
