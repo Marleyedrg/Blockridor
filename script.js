@@ -61,11 +61,11 @@ if(turn === 1){//initial state
 const ChangeTurn = function(currentTurn){
   if(currentTurn === 1){
     currentPlayer = player2;
-    message.innerText = `it's ${player1.playerName} turn`
+    message.innerText = `it's ${player2.playerName} turn`
     return turn = 2;
   }else if(currentTurn === 2){
     currentPlayer = player1;
-    message.innerText = `it's ${player2.playerName} turn`
+    message.innerText = `it's ${player1.playerName} turn`
     return turn = 1;
   }
 }
