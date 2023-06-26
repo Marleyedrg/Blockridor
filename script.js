@@ -40,6 +40,7 @@ let Winner = function(){
   player1.RmvOldPlyerPosition(player1.PlayerPosition);
   player2.RmvOldPlyerPosition(player2.PlayerPosition);
 
+  currentPlayer.SetPlayerPosition(currentPlayer.PlayerPosition);
 
   message.innerText = `${currentPlayer.playerName} winn!!!`
 
@@ -105,7 +106,7 @@ const movementValidation = function(currentPos,clickedPosition){
   
   if(deltaX === 1 && deltaY === 0){// x move
 
-    if(clickedPosition[0] > currentPos[0] && (currentPos[0] !== 0 || currentPos[0] === 0)){
+    if(clickedPosition[0] > currentPos[0]){
       let possibleBarrer = (clickedPosition[0] - 0.5);
       possibleBarrer = (`${possibleBarrer}/${clickedPosition[1]}`);
       console.log(`${possibleBarrer} 1`)
@@ -118,7 +119,7 @@ const movementValidation = function(currentPos,clickedPosition){
         false;
       }
 
-    }else if(clickedPosition[0] < currentPos[0] && (currentPos[0] !== 0 || currentPos[0] === 0)){
+    }else if(clickedPosition[0] < currentPos[0]){
       let possibleBarrer = (clickedPosition[0] + 0.5);
       possibleBarrer = (`${possibleBarrer}/${clickedPosition[1]}`);
       console.log(possibleBarrer)
@@ -133,7 +134,7 @@ const movementValidation = function(currentPos,clickedPosition){
     }
   }else if(deltaX === 0 && deltaY === 1){// y move
 
-      if(clickedPosition[1] > currentPos[1] && (currentPos[1] !== 0 || currentPos[1] === 0)){
+      if(clickedPosition[1] > currentPos[1]){
         let possibleBarrer = (clickedPosition[1] - 0.5);
         possibleBarrer = (`${clickedPosition[0]}/${possibleBarrer}`);
         console.log(possibleBarrer)
@@ -145,7 +146,7 @@ const movementValidation = function(currentPos,clickedPosition){
           false;
         }
 
-      }else if(clickedPosition[1] < currentPos[1] && (currentPos[1] !== 0 || currentPos[1] === 0)){
+      }else if(clickedPosition[1] < currentPos[1]){
         let possibleBarrer = (clickedPosition[1] + 0.5);
         possibleBarrer = (`${clickedPosition[0]}/${possibleBarrer}`);
         console.log(possibleBarrer)
