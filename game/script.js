@@ -7,8 +7,8 @@ let reloadBtn = document.getElementById('reloadBtn')
 
 const player1 = {
   playerName: '⚫BLACK',
-  PlayerPosition: [-4,0],
-  positionXToWin: 4,
+  PlayerPosition: [0,4],
+  positionYToWin: -4,
   SetPlayerPosition : function(position){
     let squareElement = document.getElementById(`${String(position[0])}/${String(position[1])}`);
   
@@ -22,8 +22,8 @@ const player1 = {
 }
 const player2 = {
   playerName: '🔴RED',
-  PlayerPosition: [4,0],
-  positionXToWin: -4,
+  PlayerPosition: [0,-4],
+  positionYToWin: 4,
   SetPlayerPosition : function(position){
     let squareElement = document.getElementById(`${String(position[0])}/${String(position[1])}`);
   
@@ -193,8 +193,8 @@ squares.forEach(squares =>{
 
         return Winner();
  
-      }else if(player1.PlayerPosition[0] === player1.positionXToWin || 
-        player2.PlayerPosition[0] === player2.positionXToWin){
+      }else if(player1.PlayerPosition[1] === player1.positionYToWin || 
+        player2.PlayerPosition[1] === player2.positionYToWin){
      
         return Winner();
 

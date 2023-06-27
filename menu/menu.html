@@ -28,7 +28,7 @@
         <input class="hidden" type="radio" name="slider" id="tab-2" checked />
 
         <div class="card-title">
-          <h2>Escolha o modo: </h2>
+          <h2>Choose mode:</h2>
         </div>
 
         <div class="card-header">
@@ -38,14 +38,30 @@
 
           <div class="slider"></div>
         </div>
+
         <div class="card-content">
-          <div id="2players" class="type-game hidden">
-            <button class="btn-play">Play</button>
+
+          <div id="two-players" class="hidden">
+            <p>Two people play on the same device, taking turns</p>
+            
+            <div class="buttons">
+              <a href="/game/game.html">
+                <button class="btn-play" id="btn-play-2players">Play</button>
+              </a>
+            </div>
           </div>
-          <div id="multiplayer" class="type-game ">
-            <input type="key-room" name="key-room" id="key-room">
-            <button class="btn-play">Play</button>
+
+          <div id="multiplayer" class="">
+            <p>Click create room and share the provided code with a friend or enter a code below and join a room</p>
+            <h3>Enter the room key:</h3>
+            <input type="text" name="key-room" id="key-room">
+            <div class="buttons">
+              <button id="btn-create-room">Create room</button>
+              <button class="btn-play" id="btn-join-multiplayer">Join room</button>
+            </div>
+            
           </div>
+
         </div>
       </div>
       
