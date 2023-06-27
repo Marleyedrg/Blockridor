@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game</title>
+
+    <link rel="stylesheet" href="/menu/menu.css" />
+  </head>
+  <body>
+
+    <div id="tutorial" class="turorial-popup">
+        <div class="tutorial-header">
+          <h1>Tutorial</h1>
+
+            <button id="close-btn">X</button> 
+
+        </div>
+        <div class="tutorial-content">
+
+        </div>
+    </div>
+
+    <div class="container">
+
+      <div class="card">
+        <input class="hidden" type="radio" name="slider" id="tab-1" />
+        <input class="hidden" type="radio" name="slider" id="tab-2" checked />
+
+        <div class="card-title">
+          <h2>Escolha o modo: </h2>
+        </div>
+
+        <div class="card-header">
+          <label for="tab-1" class="type1"">2 players<br>local</label>
+
+          <label for="tab-2" class="type2">Multiplayer</label>
+
+          <div class="slider"></div>
+        </div>
+        <div class="card-content">
+          <div id="2players" class="type-game hidden">
+            <button class="btn-play">Play</button>
+          </div>
+          <div id="multiplayer" class="type-game ">
+            <input type="key-room" name="key-room" id="key-room">
+            <button class="btn-play">Play</button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <footer>
+      <p>My github:</p><a href="https://github.com/Marleyedrg"> Marley Eduardo Rocha Guedes</a>
+    </footer>
+    <script src="/menu/menu.js"></script>
+  </body>
+</html>

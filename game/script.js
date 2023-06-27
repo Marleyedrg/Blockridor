@@ -98,9 +98,9 @@ barrer.forEach(barrer =>{
 });
 
 const movementValidation = function(currentPos,clickedPosition){
-  /**
-   * this method "Math.abs" ignores the sign of the number, so we don't care about the direction of the movement, but  whether its absolute value was just one movement.Thanks chatgpt :)
-   * */
+  /*
+   this method "Math.abs" ignores the sign of the number, so we don't care about the direction of the movement, but  whether its absolute value was just one movement.
+    */
   let deltaX = Math.abs(clickedPosition[0] - currentPos[0]);
   let deltaY = Math.abs(clickedPosition[1] - currentPos[1]);
   
