@@ -107,9 +107,10 @@ html{
     
 }
 
-@media screen and (min-width: 768px) and (min-height: 768px) {
+
+@media screen and (min-width: 768px) and (min-height: 468px) {
     .space-btw-sqr:hover {
         cursor: pointer;
-        background-color: #85bdf5c6;
+        background-color: #74fa76c6;
     }
   }
