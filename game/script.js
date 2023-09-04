@@ -37,11 +37,7 @@ const player2 = {
 }
 
 let Winner = function(){
-  player1.RmvOldPlyerPosition(player1.PlayerPosition);
-  player2.RmvOldPlyerPosition(player2.PlayerPosition);
-
-  currentPlayer.SetPlayerPosition(currentPlayer.PlayerPosition);
-
+ //winner message and new game button
   message.innerText = `${currentPlayer.playerName} winn!!!`
 
   reloadBtn.classList.remove('hidden')
@@ -49,6 +45,10 @@ let Winner = function(){
   reloadBtn.addEventListener('click', ()=>{
     location.reload();
   })
+  //block actions
+  player1.PlayerPosition = 0;
+  player2.PlayerPosition = 0;
+  turn = 0;
   
 }
 
