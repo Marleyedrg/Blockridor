@@ -5,6 +5,17 @@ let message = document.getElementById('message');
 
 let reloadBtn = document.getElementById('reloadBtn')
 
+function reproduzirAudio(audio) {
+  if(audio == "move"){
+    let audioMove = document.getElementById('audioMove')
+    audioMove.play();
+  }else if(audio == "wall"){
+    let audioWall = document.getElementById('audioWall')
+    audioWall.play();
+  }
+
+}
+
 const player1 = {
   playerName: '⚫BLACK',
   PlayerPosition: [0,4],
@@ -93,7 +104,9 @@ barrer.forEach(barrer =>{
       barrer.classList.add('red');
 
       ChangeTurn(turn);
+      
     }
+    reproduzirAudio("wall")
   });
 });
 
@@ -200,6 +213,7 @@ squares.forEach(squares =>{
 
       }else{
         ChangeTurn(turn);
+        reproduzirAudio("move")
       }
     }
   });
