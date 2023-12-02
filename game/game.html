@@ -4,14 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jogo</title>
-    <link rel="stylesheet" href="./game/style.css">
+    <link rel="stylesheet" href="/game/style.css">
 </head>
 <body>
-
-    <div class="hidden">
-        <audio id="audioMove" src="/game/audio/move.mp3"></audio>
-        <audio id="audioWall" src="/game/audio/wall.mp3"></audio>
-    </div>
     <div class="scoreboard">
         <h1 id="message"></h1>
         <button id="reloadBtn" class="hidden">New game</button>
@@ -342,6 +337,10 @@
         </div>
     </div>
 
+    <div class="hidden">
+        <audio id="audioMove" src="/game/audio/move.mp3"></audio>
+        <audio id="audioWall" src="/game/audio/wall.mp3"></audio>
+    </div>
     
     <script src="/game/script.js"></script>
 </body>
